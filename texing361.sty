@@ -1,0 +1,90 @@
+%%Identification
+%%The package identifies itself and the LaTeX version needed
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texing361}[CS 361 LaTeX Helper Package]
+
+% Formatting
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage[titletoc,title]{appendix}
+\RequirePackage[english]{babel}
+\RequirePackage{verbatim}
+\RequirePackage{enumerate}
+\RequirePackage[shortlabels]{enumitem}
+
+% MATH Packages
+\RequirePackage{amsmath, amsfonts, amssymb, mathtools, amsthm, array}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\RequirePackage{graphicx, float}
+
+% Tables
+\RequirePackage{multirow, array}
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled, vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+% Package Options
+% Nothing Yet
+
+% Theorem Environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{remark}[theorem]{Remark}
+
+% Python Code Formatting
+
+
+% Linear Algebra Notations
+\newcommand{\avec}[1]{\vec{#1}}
+\newcommand{\bvec}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+% det is already defined
+% Ker is already defined
+\DeclareMathOperator{\eig}{Eig}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\vecdot}[2]{\left\langle#1,#2\right\rangle}
+
+
+% Logic Notations
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+
+% Statistics/Probability Notations
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\pdf}[2]{f_{#1}\left(#2\right)}
+\newcommand{\cdf}[2]{F_{#1}\left(#2\right)}
+\newcommand{\E}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\V}[1]{\text{Var}\left[#1\right]}
+\newcommand{\Cov}[1]{\text{Cov}\left[#1\right]}
+
+% Discrete Probability Distribution
+% Use R Convention: p -> c.d.f and d -> p.m.f./p.d.f
+% Binomial
+\newcommand{\pbinom}[2]{f_{x} = \binom{#1}{}}
+
+% Continuous Probability Distribution
+
+
+
+% Arguments
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Misc
+\newcommand{\parn}[1]{\left(#1\right)}
+
