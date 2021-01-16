@@ -3,7 +3,7 @@
 \usepackage{texing361}
 
 \title{CS 361 Formula Mega Thread}
-\author{Chenhui Zhang}
+\author{Anonymous Comp}
 \date{January 11, 2021}
 
 \begin{document}
@@ -12,6 +12,7 @@
 
 \section{TeXing361 Commands}
 \begin{itemize}
+    \item Set: $\set{1, 2, 3, \cdots}$
     \item Vector (Arrow): $\avec{a}$
     \item Vector (Bold): $\bvec{a}$
     \item Matrix: $\mat{A}$
@@ -21,12 +22,197 @@
     \item Diagonal Matrix: $\diag{(1, 2, 3)}$
     \item Norm: $\norm{\bvec{a}}$
     \item Inner Product: $\vecdot{\avec{a}}{\avec{b}}$
+    \item Expected Value: $\E{X}$
+    \item Variance: $\V{X}$
+    \item Covariance: $\Cov{X}$
+    \item Argmin/Argmax: $\argmin{x}{f(x)}$
 \end{itemize}
 
-\section{Common Probability Distributions}
+\newpage
+\section{Common Probability Distributions \protect\footnote{Excerpted from \emph{Probability and Statistical Inference, 9th Edition}}}
     \subsection{Discrete}
+        \begin{enumerate}[(a)]
+            \item Bernoulli $(0 < p < 1)$
+            $$
+            \begin{aligned}
+                & p(x) = p^x(1 - p)^{1 - x}, \;\;\;\; x = 0, 1 \\
+                & M(t) = 1 - p + pe^t \\
+                & \mu = p, \; \sigma^2 = p(1 - p) \\
+            \end{aligned}
+            $$
+            
+            \item Binomial $(0 < p < 1)$
+            $$
+            \begin{aligned}
+                & p(x) = \binom{n}{x} p^x(1 - p)^{n - x}, \;\;\;\; x = 0, 1, \cdots, n \\
+                & M(t) = (1 - p + pe^t )^n \\
+                & \mu = np, \; \sigma^2 = np(1 - p) \\
+            \end{aligned}
+            $$
+            
+            \item Geometric $(0 < p < 1)$
+            $$
+            \begin{aligned}
+                & p(x) = (1 - p)^{x - 1}p, \;\;\;\; x = 1, 2, \cdots \\
+                & M(t) = \frac{pe^t}{1 - (1 - p)e^t}, \;\;\;\; t < -\ln{(1 - p)}\\
+                & \mu = \frac{1}{p}, \; \sigma^2 = \frac{1 - p}{p^2}
+            \end{aligned}
+            $$
+
+            \item Hypergeometric $(N_1 > 0, \; N_2 > 0, \; N = N_1 + N_2)$
+            $$
+            \begin{aligned}
+                & p(x) = \frac{\binom{N_1}{x}\binom{N_2}{n - x}}{\binom{N}{n}}, \;\;\;\; x < N_1, \; n - x < N_2 \\
+                & \mu = n\left(\frac{N_1}{N}\right), \; \sigma^2 = n\left(\frac{N_1}{N}\right)\left(\frac{N_2}{N}\right)\left(\frac{N - n}{N - 1}\right)
+            \end{aligned}
+            $$
+            
+            \item Negativebinomial $(0 < p < 1, \; r = 1, 2, 3, \cdots)$
+            $$
+            \begin{aligned}
+                & p(x) = \binom{x - 1}{r - 1}p^r(1 - p)^{x - r}, \;\;\;\; x = r, r + 1, r + 2, \cdots \\
+                & M(t) = \frac{(pe^t)^r}{[1 - (1 - p)e^t]^r}, \;\;\;\; t < -\ln{(1 - p)} \\
+                & \mu = r\left(\frac{1}{p}\right), \; \sigma^2 = \frac{r(1 - p)}{p^2}
+            \end{aligned}
+            $$
+            
+            \item Poisson $(\lambda > 0)$
+            $$
+            \begin{aligned}
+                & p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \;\;\;\; x = 0, 1, 2, \cdots \\
+                & M(t) = e^{\lambda(e^t - 1)} \\
+                & \mu = \lambda, \sigma^2 = \lambda
+            \end{aligned}
+            $$
+            
+            \item Uniform $(m > 0)$
+            $$
+            \begin{aligned}
+                & p(x) = \frac{1}{m}, \;\;\;\; x = 1, 2, \cdots, m \\
+                & \mu = \frac{m + 1}{2}, \sigma^2 = \frac{m^2 - 1}{12}
+            \end{aligned}
+            $$
+        \end{enumerate}
 
 
-\subsection{Continuous}
+    \subsection{Continuous}
+        \begin{enumerate}[(a)]
+            \item Beta $(\alpha > 0, \beta > 0)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha - 1}(1 - x)^{\beta - 1}, \;\;\;\; 0 < x < 1 \\
+                & \mu = \frac{\alpha}{\alpha + \beta}, \sigma^2 = \frac{\alpha\beta}{(\alpha + \beta + 1)(\alpha + \beta)^2}
+            \end{aligned}
+            $$
+            
+            \item Chi-square $(r = 1, 2, \cdots)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{1}{\Gamma(r / 2) 2^{r / 2}}x^{r / 2 - 1}e^{-x/2}, \;\;\;\; 0 \leq x < \infty \\
+                & M(t) = \frac{1}{(1 - 2t)^{r / 2}}, \;\;\;\; t < \frac{1}{2} \\
+                & \mu = r, \sigma^2 = 2r
+            \end{aligned}
+            $$
+            
+            \item Exponential $(\theta > 0)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{1}{\theta}e^{-x/\theta}, \;\;\;\; 0 \leq x < \infty \\
+                & M(t) = \frac{1}{1 - \theta t}, \;\;\;\; t < \frac{1}{\theta} \\
+                & \mu = \theta, \sigma^2 = \theta^2
+            \end{aligned}
+            $$
+            
+            \item Gamma $(\alpha > 0, \beta > 0)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{1}{\Gamma(\alpha)\theta^\alpha}x^{\alpha - 1}e^{-x/\theta}, \;\;\;\; 0 \leq x < \infty \\
+                & M(t) = \frac{1}{(1 - \theta t)^\alpha}, \;\;\;\; t < \frac{1}{\theta} \\
+                & \mu = \alpha\theta, \sigma^2 = \alpha\theta^2
+            \end{aligned}
+            $$
+            
+            \item Normal $(-\infty < \mu < \infty, \sigma > 0)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-(x - \mu)^2 / 2\sigma^2}, \;\;\;\; -\infty < x < \infty \\
+                & M(t) = e^{\mu t + \sigma^2t^2 / 2} \\
+                & \E{X} = \mu, \V{X} = \sigma^2
+            \end{aligned}
+            $$
+            
+            \item Uniform $(a < b)$
+            $$
+            \begin{aligned}
+                & f(x) = \frac{1}{b - a}, \;\;\;\; a < x < b \\
+                & M(t) = \frac{e^{tb} - e^{ta}}{t(b - a)}, \;\;\;\; t \neq 0; \; M(0) = 1 \\
+                & \mu = \frac{a + b}{2}, \sigma^2 = \frac{(b - a)^2}{12}
+            \end{aligned}
+            $$
+        \end{enumerate}
 
+\newpage
+\section{Boilerplate}
+    \subsection{Maximum Likelihood Estimation}
+    \begin{itemize}
+        \item Finding the likelihood function,
+        $$
+        \begin{aligned}
+            \mathcal{L}(\Psi) &= \prod_{i = 1}^n f(x_i; \Psi)\\
+            &= \prod_{i = 1}^n \frac{2}{\sqrt{\pi\Psi}}e^{-x_i^2/\Psi}\\
+            &= \left(\frac{2}{\sqrt{\pi\Psi}}\right)^n\prod_{i = 1}^n e^{-x_i^2 / \Psi}.
+        \end{aligned}
+        $$
+        \item Taking the natural log of both sides,
+        $$
+        \ln\mathcal{L}(\Psi) = n\ln\frac{2}{\sqrt{\pi\Psi}} - \frac{1}{\Psi}\sum_{i = 1}^n x_i^2.
+        $$
+        \item Taking derivative w.r.t $\Psi$ and set to zero,
+        $$
+        \frac{\text{d}}{\text{d}\Psi} \ln\mathcal{L}(\Psi) = \frac{2 \sum_{i = 1}^n x_i^2 - n \Psi }{2 \Psi ^2} = 0.
+        $$
+        \item Solving for $\Psi$,
+        $$
+        \boxed{\hat{\Psi} = \frac{2\sum_{i = 1}^n x_i^2}{n}}.
+        $$
+    \end{itemize}
+
+    \subsection{Hypothesis Testing for Population Mean}
+    \begin{itemize}
+        \item Calculate test statistic
+        If the population standard deviation is known,
+        $$
+        Z = \frac{\Bar{X} - \mu_0}{\sigma / n}.
+        $$
+        If population standard deviation is unknown,
+        $$
+        T = \frac{\Bar{X} - \mu_0}{s / n}
+        $$
+        where $s$ is the sample standard deviation.
+        \item Determine the $p$-value by integration, table, or technology (or rejection region). Be careful with the underlying distribution you are choosing.
+        \item Compare and reach a conclusion (reject or fail to reject).
+    \end{itemize}
+    
+    \subsection{Code Highlight}
+    \begin{itemize}
+        \item Insert Code Block Directly
+        \usemintedstyle{vs} % Or choose your own favourite
+        \begin{minted}{python}
+            import numpy as np
+                
+            def incmatrix(genl1, genl2):
+                m = len(genl1)
+                n = len(genl2)
+                M = None # to become the incidence matrix
+                VT = np.zeros((n * m, 1), int)  # dummy variable
+                
+                # compute the bitwise xor matrix
+                M1 = bitxormatrix(genl1)
+                M2 = np.triu(bitxormatrix(genl2), 1) 
+            ...
+        \end{minted}
+        \item Insert Code Block from External File
+        \inputminted{python}{minted_example.py}
+    \end{itemize}
+    
 \end{document}
