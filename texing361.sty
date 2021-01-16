@@ -86,8 +86,8 @@
 \newcommand{\Cov}[1]{\text{Cov}\left[#1\right]}
 
 % Arguments
-\DeclareMathOperator*{\argmin}{arg\,min}
-\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\argmin}[2]{\underset{#1}{\text{arg\,min}}\; #2}
+\newcommand{\argmax}[2]{\underset{#1}{\text{arg\,max}}\; #2}
 
 % Misc
 \newcommand{\parn}[1]{\left(#1\right)}
