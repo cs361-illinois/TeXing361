@@ -4,13 +4,33 @@
 \ProvidesPackage{texing361}[CS 361 LaTeX Helper Package]
 
 % Formatting
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[margin=1in]{geometry}
-\RequirePackage[titletoc,title]{appendix}
-\RequirePackage[english]{babel}
+\RequirePackage{lineno}
 \RequirePackage{verbatim}
 \RequirePackage{enumerate}
+\RequirePackage[english]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[margin=1in]{geometry}
 \RequirePackage[shortlabels]{enumitem}
+\RequirePackage[titletoc, title]{appendix}
+\RequirePackage{fancyhdr, clrscode, tabularx, color}
+
+% Redefinition of the footer and header for "plain" page style to add header, footer, and page number on the first page
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \lhead{University of Illinois, Urbana-Champaign}
+    \rhead{CS 361}
+    \rfoot{Page \thepage}
+}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CS 361}
+\lhead{University of Illinois, Urbana-Champaign}
+\rfoot{Page \thepage}
+
+% Placeholder
+\RequirePackage{blindtext}
 
 % MATH Packages
 \RequirePackage{amsmath, amsfonts, amssymb, mathtools, amsthm, array}
@@ -34,18 +54,12 @@
 \usepackage{minted}
 \usemintedstyle{borland}
 
-% Package Options
-% Nothing Yet
-
 % Theorem Environments
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{remark}[theorem]{Remark}
-
-% Python Code Formatting
-
 
 % Linear Algebra Notations
 \newcommand{\avec}[1]{\vec{#1}}
@@ -59,7 +73,6 @@
 \newcommand{\norm}[1]{\left\|#1\right\|}
 \newcommand{\vecdot}[2]{\left\langle#1,#2\right\rangle}
 
-
 % Logic Notations
 \newcommand{\union}{\cup}
 \newcommand{\intersect}{\cap}
@@ -71,15 +84,6 @@
 \newcommand{\E}[1]{\mathbb{E}\left[#1\right]}
 \newcommand{\V}[1]{\text{Var}\left[#1\right]}
 \newcommand{\Cov}[1]{\text{Cov}\left[#1\right]}
-
-% Discrete Probability Distribution
-% Use R Convention: p -> c.d.f and d -> p.m.f./p.d.f
-% Binomial
-\newcommand{\pbinom}[2]{f_{x} = \binom{#1}{}}
-
-% Continuous Probability Distribution
-
-
 
 % Arguments
 \DeclareMathOperator*{\argmin}{arg\,min}
